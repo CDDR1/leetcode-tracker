@@ -1,9 +1,13 @@
 const express = require("express");
 
+// API version 1
+const v1Router = require("./v1/routes");
+
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-  res.send("Hello world!");
+app.use("/api/v1", v1Router);
+
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT} 🚀🚀🚀`);
 });
-
-app.listen(4000, () => console.log(`Listening on port 4000 🚀🚀🚀`));
