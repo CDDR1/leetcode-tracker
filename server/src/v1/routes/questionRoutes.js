@@ -1,24 +1,16 @@
 const express = require("express");
+const questionController = require("../../controllers/questionController");
+
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("Get all questions");
-});
+router.get("/", questionController.getAllQuestions);
 
-router.get("/:questionId", (req, res) => {
-  res.send("Get single question by id");
-});
+router.get("/:questionId", questionController.getOneQuestion);
 
-router.post("/", (req, res) => {
-  res.send("Add a new question");
-});
+router.post("/", questionController.createNewQuestion);
 
-router.patch("/:questionId", (req, res) => {
-  res.send("Update existing question by id");
-});
+router.patch("/:questionId", questionController.updateOneQuestion);
 
-router.delete("/:questionId", (req, res) => {
-  res.send("Delete existing question by id");
-});
+router.delete("/:questionId", questionController.deleteOneQuestion);
 
 module.exports = router;
