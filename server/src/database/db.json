@@ -1,0 +1,28 @@
+{
+  "questions": [
+    {
+      "id": "1",
+      "number": "1",
+      "title": "Two Sum",
+      "difficulty": "Easy"
+    },
+    {
+      "id": "2",
+      "number": "11",
+      "title": "Container With Most Water",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "3",
+      "number": "15",
+      "title": "3Sum",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "4",
+      "number": "23",
+      "title": "Merge k Sorted Lists",
+      "difficulty": "Hard"
+    }
+  ]
+}
