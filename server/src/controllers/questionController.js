@@ -1,8 +1,8 @@
-const questionService = require("../services/questionService");
+
 
 const getAllQuestions = (req, res) => {
   const allQuestions = questionService.getAllQuestions();
-  res.send({ tatus: "OK", data: allQuestions });
+  res.send("Get all questions");
 };
 
 const getOneQuestion = (req, res) => {
