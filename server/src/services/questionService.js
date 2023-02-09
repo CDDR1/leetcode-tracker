@@ -1,8 +1,7 @@
-const Question = require("../database/question");
+
 
 const getAllQuestions = () => {
-  const allQuestions = Question.getAllQuestions();
-  return allQuestions;
+  return;
 };
 
 const getOneQuestion = () => {

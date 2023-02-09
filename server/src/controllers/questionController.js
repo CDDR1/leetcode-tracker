@@ -1,4 +1,4 @@
-
+const questionService = require("../services/questionService");
 
 const getAllQuestions = (req, res) => {
   const allQuestions = questionService.getAllQuestions();
