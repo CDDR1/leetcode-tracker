@@ -27,9 +27,13 @@ const createNewQuestion = async (req, res) => {
   }
 };
 
-const updateOneQuestion = (req, res) => {
-  const updatedQuestion = questionService.updateOneQuestion();
-  res.send("Update existing question by id");
+const updateOneQuestion = async (req, res) => {
+  try {
+    const updatedQuestion = await questionService.updateOneQuestion(req);
+    res.status(200).json(updatedQuestion);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 const deleteOneQuestion = async (req, res) => {

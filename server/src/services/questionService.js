@@ -15,10 +15,12 @@ const createNewQuestion = ({ number, title, difficulty }) => {
   return Question.create({ number, title, difficulty });
 };
 
-const updateOneQuestion = () => {
-  return;
+// UPDATE single question by id
+const updateOneQuestion = ({ params: { questionId }, body }) => {
+  return Question.findOneAndUpdate({ _id: questionId }, { ...body });
 };
 
+// DELETE single question by id
 const deleteOneQuestion = ({ questionId }) => {
   return Question.findOneAndDelete({ _id: questionId });
 };
