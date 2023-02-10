@@ -10,9 +10,13 @@ const getOneQuestion = (req, res) => {
   res.send("Get single question by id");
 };
 
-const createNewQuestion = (req, res) => {
-  const createdQuestion = questionService.createNewQuestion();
-  res.send("Add a new question");
+const createNewQuestion = async (req, res) => {
+  try {
+    const createdQuestion = await questionService.createNewQuestion(req.body);
+    res.status(200).send(createdQuestion);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 const updateOneQuestion = (req, res) => {
