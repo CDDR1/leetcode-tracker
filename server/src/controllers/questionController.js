@@ -1,8 +1,12 @@
 const questionService = require("../services/questionService");
 
-const getAllQuestions = (req, res) => {
-  const allQuestions = questionService.getAllQuestions();
-  res.send("Get all questions");
+const getAllQuestions = async (req, res) => {
+  try {
+    const allQuestions = await questionService.getAllQuestions();
+    res.status(200).send(allQuestions);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 const getOneQuestion = (req, res) => {
