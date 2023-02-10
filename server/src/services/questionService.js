@@ -6,12 +6,12 @@ const getAllQuestions = async () => {
 };
 
 // GET single question by id
-const getOneQuestion = ({ questionId }) => { console.log(questionId)
+const getOneQuestion = ({ questionId }) => {
   return Question.findById(questionId);
 };
 
 // POST a new question
-const createNewQuestion = async ({ number, title, difficulty }) => {
+const createNewQuestion = ({ number, title, difficulty }) => {
   return Question.create({ number, title, difficulty });
 };
 
@@ -19,8 +19,8 @@ const updateOneQuestion = () => {
   return;
 };
 
-const deleteOneQuestion = () => {
-  return;
+const deleteOneQuestion = ({ questionId }) => {
+  return Question.findOneAndDelete({ _id: questionId });
 };
 
 module.exports = {

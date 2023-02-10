@@ -32,9 +32,13 @@ const updateOneQuestion = (req, res) => {
   res.send("Update existing question by id");
 };
 
-const deleteOneQuestion = (req, res) => {
-  questionService.deleteOneQuestion();
-  res.send("Delete existing question by id");
+const deleteOneQuestion = async (req, res) => {
+  try {
+    const deletedQuestion = await questionService.deleteOneQuestion(req.params);
+    res.status(200).json(deletedQuestion);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 module.exports = {
