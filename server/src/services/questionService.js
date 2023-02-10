@@ -1,12 +1,13 @@
 const Question = require("../models/questionModel");
 
-// GET  all questions
+// GET all questions
 const getAllQuestions = async () => {
-  return Question.find();
+  return Question.find({});
 };
 
-const getOneQuestion = () => {
-  return;
+// GET single question by id
+const getOneQuestion = ({ questionId }) => { console.log(questionId)
+  return Question.findById(questionId);
 };
 
 // POST a new question
