@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
-import QuestionList from "./components/QuestionList";
+import SavedQuestions from "./pages/SavedQuestions";
+import { Route, Routes } from "react-router-dom";
 
 const App = () => {
   return (
@@ -8,11 +9,9 @@ const App = () => {
         <div>
           <Navbar />
         </div>
-        {/* Saved Qestions Page */}
-        <div className="">
-          <h1 className="text-4xl text-center my-20">Saved Questions</h1>
-          <QuestionList />
-        </div>
+        <Routes>
+          <Route path="/" element={<SavedQuestions />} />
+        </Routes>
       </div>
     </>
   );
