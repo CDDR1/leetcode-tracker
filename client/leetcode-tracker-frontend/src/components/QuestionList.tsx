@@ -7,7 +7,8 @@ const QuestionList = () => {
   useEffect(() => {
     fetch("https://leetcode-tracker-production.up.railway.app/api/v1/questions")
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error));
   }, []);
 
   return (
