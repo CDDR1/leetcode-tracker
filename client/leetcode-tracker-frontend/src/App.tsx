@@ -1,6 +1,5 @@
 import Navbar from "./components/Navbar";
 import QuestionList from "./components/QuestionList";
-import Footer from "./components/Footer";
 
 const App = () => {
   return (
