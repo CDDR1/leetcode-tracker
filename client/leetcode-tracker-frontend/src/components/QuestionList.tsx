@@ -1,4 +1,5 @@
 import Collapse from "./Collapse";
+import QuestionCard from "./QuestionCard";
 import { useState, useEffect } from "react";
 
 type QuestionsState = {
@@ -21,7 +22,7 @@ const QuestionList = () => {
   return (
     <div className="mx-auto w-2/3 flex flex-col gap-2">
       {questions.map((question) => (
-        <Collapse key={question._id} questionNumber={question.number} questionName={question.title} questionDifficulty={question.difficulty} />
+        <QuestionCard key={question._id} questionNumber={question.number} title={question.title} difficulty={question.difficulty} />
       ))}
     </div>
   );
