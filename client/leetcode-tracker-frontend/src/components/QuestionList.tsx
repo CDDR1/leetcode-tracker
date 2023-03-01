@@ -20,10 +20,13 @@ const QuestionList = () => {
   }, []);
 
   return (
-    <div className="mx-auto w-2/3 flex flex-col gap-2">
-      {questions.map((question) => (
-        <QuestionCard key={question._id} questionNumber={question.number} title={question.title} difficulty={question.difficulty} />
-      ))}
+    <div className="w-8/12">
+      <h1 className="text-4xl text-center my-20">Saved Questions</h1>
+      <div className="flex flex-col items-center">
+        {questions.map((question) => (
+          <QuestionCard key={question._id} questionNumber={question.number} title={question.title} difficulty={question.difficulty} />
+        ))}
+      </div>
     </div>
   );
 };

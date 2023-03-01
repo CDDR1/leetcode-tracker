@@ -6,7 +6,7 @@ type QuestionCardProps = {
 
 const QuestionCard = ({ title, questionNumber, difficulty }: QuestionCardProps) => {
   return (
-    <div className="card w-96 bg-base-100 shadow-xl rounded-md">
+    <div className="card w-96 bg-base-100 shadow-lg rounded-md my-4">
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
         <ul>

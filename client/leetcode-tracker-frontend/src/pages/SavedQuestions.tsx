@@ -1,10 +1,13 @@
 import QuestionList from "../components/QuestionList";
+import Form from "../components/Form";
 
 const SavedQuestions = () => {
   return (
-    <div className="">
-      <h1 className="text-4xl text-center my-20">Saved Questions</h1>
+    <div className="flex">
       <QuestionList />
+      <div className="flex justify-center items-center">
+        <Form />
+      </div>
     </div>
   );
 };
