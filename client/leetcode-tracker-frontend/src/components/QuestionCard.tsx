@@ -1,12 +1,30 @@
 import { FaTrash, FaEdit } from "react-icons/fa";
 
 type QuestionCardProps = {
+  id: string;
   title: string;
   questionNumber: number;
   difficulty: string;
 };
 
-const QuestionCard = ({ title, questionNumber, difficulty }: QuestionCardProps) => {
+const QuestionCard = ({ id, title, questionNumber, difficulty }: QuestionCardProps) => {
+  const handleDelete = async () => {
+    try {
+      const res = await fetch(`https://leetcode-tracker-production-2900.up.railway.app/api/v1/questions/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const deletedQuestion = await res.json();
+
+      console.log(deletedQuestion);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="card w-96 bg-base-100 shadow-lg rounded-md my-4">
       <div className="card-body">
@@ -16,7 +34,7 @@ const QuestionCard = ({ title, questionNumber, difficulty }: QuestionCardProps) 
           <li>Difficulty: {difficulty}</li>
         </ul>
         <div className="flex justify-end gap-2 text-xl">
-          <button>
+          <button onClick={handleDelete}>
             <FaTrash />
           </button>
           <button>

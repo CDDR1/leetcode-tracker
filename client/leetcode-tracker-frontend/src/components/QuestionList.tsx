@@ -18,7 +18,7 @@ const QuestionList = () => {
       <h1 className="text-4xl text-center my-20">Saved Questions</h1>
       <div className="flex flex-col items-center">
         {questions.map((question) => (
-          <QuestionCard key={question._id} questionNumber={question.number} title={question.title} difficulty={question.difficulty} />
+          <QuestionCard key={question._id} id={question._id} questionNumber={question.number} title={question.title} difficulty={question.difficulty} />
         ))}
       </div>
     </div>
