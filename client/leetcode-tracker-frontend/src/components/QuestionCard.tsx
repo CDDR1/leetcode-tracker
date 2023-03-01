@@ -1,4 +1,5 @@
 import { FaTrash, FaEdit } from "react-icons/fa";
+import useQuestionStore from "../zustand/questionStore";
 
 type QuestionCardProps = {
   id: string;
@@ -8,6 +9,8 @@ type QuestionCardProps = {
 };
 
 const QuestionCard = ({ id, title, questionNumber, difficulty }: QuestionCardProps) => {
+  const deleteQuestion = useQuestionStore((state) => state.delete);
+
   const handleDelete = async () => {
     try {
       const res = await fetch(`https://leetcode-tracker-production-2900.up.railway.app/api/v1/questions/${id}`, {
@@ -18,8 +21,7 @@ const QuestionCard = ({ id, title, questionNumber, difficulty }: QuestionCardPro
       });
 
       const deletedQuestion = await res.json();
-
-      console.log(deletedQuestion);
+      deleteQuestion(deletedQuestion);
     } catch (error) {
       console.error(error);
     }
