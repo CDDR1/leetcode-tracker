@@ -1,6 +1,7 @@
 import Collapse from "./Collapse";
 import QuestionCard from "./QuestionCard";
 import { useState, useEffect } from "react";
+import useQuestionStore from "../zustand/questionStore";
 
 type QuestionsState = {
   _id: string;
@@ -10,7 +11,8 @@ type QuestionsState = {
 };
 
 const QuestionList = () => {
-  const [questions, setQuestions] = useState<QuestionsState[]>([]);
+  const questions = useQuestionStore((state) => state.questions);
+  const setQuestions = useQuestionStore((state) => state.load);
 
   useEffect(() => {
     fetch("https://leetcode-tracker-production.up.railway.app/api/v1/questions")
