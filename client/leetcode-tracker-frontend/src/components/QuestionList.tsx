@@ -1,14 +1,6 @@
-import Collapse from "./Collapse";
 import QuestionCard from "./QuestionCard";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import useQuestionStore from "../zustand/questionStore";
-
-type QuestionsState = {
-  _id: string;
-  number: number;
-  title: string;
-  difficulty: string;
-};
 
 const QuestionList = () => {
   const questions = useQuestionStore((state) => state.questions);

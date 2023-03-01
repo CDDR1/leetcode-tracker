@@ -3,9 +3,9 @@ import Form from "../components/Form";
 
 const SavedQuestions = () => {
   return (
-    <div className="flex">
+    <div className="flex bg-slate-50">
       <QuestionList />
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-start">
         <Form />
       </div>
     </div>

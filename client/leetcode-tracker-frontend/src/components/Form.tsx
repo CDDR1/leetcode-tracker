@@ -1,10 +1,41 @@
-import React from "react";
+import useQuestionStore from "../zustand/questionStore";
 
 const Form = () => {
+  const addNewQuestion = useQuestionStore((state) => state.create);
+
+  const handleFormSubmission = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target as HTMLFormElement);
+
+    const question = {
+      title: formData.get("question-name" as string),
+      number: parseInt(formData.get("question-number") as string),
+      difficulty: formData.get("question-difficulty" as string),
+    };
+
+    try {
+      const res = await fetch("https://leetcode-tracker-production-2900.up.railway.app/api/v1/questions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(question),
+      });
+
+      const newQuestion = await res.json();
+      addNewQuestion(newQuestion);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
-    <form className="p-6 inline-block gap-4 shadow-lg rounded-md">
+    <form onSubmit={(e) => handleFormSubmission(e)} className="p-6 inline-block gap-4 shadow-lg rounded-md mt-32 bg-white">
       <fieldset>
-        <legend className="mx-auto"><strong>Add Question</strong></legend>
+        <legend className="mx-auto">
+          <strong>Add Question</strong>
+        </legend>
         <div className="flex flex-col my-4">
           <label htmlFor="question-name">Question Name:</label>
           <input type="text" id="question-name" name="question-name" required className="input input-bordered input-sm w-64" />
