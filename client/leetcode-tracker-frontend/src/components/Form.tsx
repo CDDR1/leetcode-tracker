@@ -1,7 +1,9 @@
 import useQuestionStore from "../zustand/questionStore";
+import { useRef } from "react";
 
 const Form = () => {
   const addNewQuestion = useQuestionStore((state) => state.create);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleFormSubmission = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,13 +27,17 @@ const Form = () => {
 
       const newQuestion = await res.json();
       addNewQuestion(newQuestion);
+
+      if (formRef.current) {
+        formRef.current.reset();
+      }
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <form onSubmit={(e) => handleFormSubmission(e)} className="p-6 inline-block gap-4 shadow-lg rounded-md mt-32 bg-white">
+    <form ref={formRef} onSubmit={(e) => handleFormSubmission(e)} className="p-6 inline-block gap-4 shadow-lg rounded-md mt-32 bg-white">
       <fieldset>
         <legend className="mx-auto">
           <strong>Add Question</strong>
