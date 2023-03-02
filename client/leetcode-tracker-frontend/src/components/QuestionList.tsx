@@ -1,6 +1,7 @@
 import QuestionCard from "./QuestionCard";
 import { useEffect } from "react";
 import useQuestionStore from "../zustand/questionStore";
+import Modal from "./Modal";
 
 const QuestionList = () => {
   const questions = useQuestionStore((state) => state.questions);
@@ -14,14 +15,17 @@ const QuestionList = () => {
   }, []);
 
   return (
-    <div className="w-8/12">
-      <h1 className="text-4xl text-center my-20">Saved Questions</h1>
-      <div className="flex flex-col items-center">
-        {questions.map((question) => (
-          <QuestionCard key={question._id} id={question._id} questionNumber={question.number} title={question.title} difficulty={question.difficulty} />
-        ))}
+    <>
+      <Modal />
+      <div className="w-8/12">
+        <h1 className="text-4xl text-center my-20">Saved Questions</h1>
+        <div className="flex flex-col items-center">
+          {questions.map((question) => (
+            <QuestionCard key={question._id} id={question._id} questionNumber={question.number} title={question.title} difficulty={question.difficulty} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

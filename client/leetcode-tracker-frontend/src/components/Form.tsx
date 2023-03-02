@@ -55,7 +55,7 @@ const Form = () => {
         <div className="flex flex-col my-4">
           <label htmlFor="question-difficulty">Question Difficulty:</label>
           <select id="question-difficulty" name="question-difficulty" required className="select select-bordered select-sm max-w-xs w-64">
-            <option value="">Select difficulty level</option>
+            <option value="default" disabled>Select difficulty level</option>
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
