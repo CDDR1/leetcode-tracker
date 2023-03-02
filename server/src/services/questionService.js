@@ -17,7 +17,7 @@ const createNewQuestion = ({ number, title, difficulty }) => {
 
 // UPDATE single question by id
 const updateOneQuestion = ({ params: { questionId }, body }) => {
-  return Question.findOneAndUpdate({ _id: questionId }, { ...body });
+  return Question.findOneAndUpdate({ _id: questionId }, { ...body }, {new: true});
 };
 
 // DELETE single question by id
